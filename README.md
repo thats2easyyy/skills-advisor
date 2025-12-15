@@ -31,32 +31,52 @@ Install: /plugin install [repo]
 Browse:  /skills-explore
 ```
 
-### 2. Analysis Mode (`/skills-analyze`)
+### 2. Hybrid Analysis Mode (`/skills-analyze`)
 
-Analyzes your conversation history to identify patterns and recommend skills:
+Combines project-specific analysis with cross-project patterns:
 
 ```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔍 Skills Analysis
 
-Based on your last 30 days of work:
+📂 THIS PROJECT:
 
-📊 Your patterns:
+   Patterns detected:
+   • 5 Zustand stores (task, chat, credit, user, memory)
+   • 8 interactive cards in src/components/interactive/
+   • Figma token sync comments in tailwind.config.js
+
+   Existing skills that match:
+   • webapp-testing - for your component testing patterns
+
+   Skills you should create:
+   • "Zustand Store Generator" - scaffold stores following your pattern
+   • "Interactive Component Scaffolder" - 8 cards share structure
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 ACROSS ALL PROJECTS:
+
+   Patterns detected:
    • Bug fixing (23 times)
-   • Writing tests (18 times)
-   • Creating PRs (15 times)
+   • Local testing workflows (15 times)
+   • PR creation (12 times)
 
-💡 Recommended skills:
-   superpowers - Matches your debugging patterns
-   webapp-testing - Matches your testing patterns
+   Existing skills that match:
+   • superpowers - matches debugging patterns
+   • webapp-testing - matches testing patterns
 
-🛠️ Skills you should create:
-   • "Weekly status report" - You've done this 4 times
-   • "PR description writer" - Consistent structure detected
+   Skills you should create:
+   • "Weekly status report" - done 4 times with similar format
 
-   Use skill-creator to build these.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**Why this matters:** Users don't know what skills to create. This shows you YOUR patterns and suggests skills based on YOUR actual work.
+**Why hybrid?**
+- **THIS PROJECT** analyzes git log and codebase for concrete, actionable recommendations
+- **ACROSS ALL PROJECTS** analyzes conversation history for workflow patterns
+
+Neither alone is complete. Conversation history shows HOW you work. Git/codebase shows WHAT you've built.
 
 ## Installation
 
