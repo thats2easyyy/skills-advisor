@@ -1,0 +1,158 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-14",
+  "skills": [
+    {
+      "name": "dev-browser",
+      "repo": "AshkanAe/dev-browser",
+      "description": "Control a real browser for testing, screenshots, and web automation",
+      "projectTypes": ["frontend", "webapp", "testing"],
+      "author": "Sawyer Hood",
+      "tags": ["browser", "testing", "screenshots", "automation"]
+    },
+    {
+      "name": "frontend-design",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Guidance on typography, spacing, animations, and visual details",
+      "projectTypes": ["frontend", "webapp", "design"],
+      "author": "Anthropic",
+      "tags": ["design", "css", "ui", "ux"]
+    },
+    {
+      "name": "webapp-testing",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Automated testing for web applications with Playwright",
+      "projectTypes": ["frontend", "webapp", "testing"],
+      "author": "Anthropic",
+      "tags": ["testing", "playwright", "e2e"]
+    },
+    {
+      "name": "docx",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Read and analyze Word documents",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "word", "office"]
+    },
+    {
+      "name": "xlsx",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Read and analyze Excel spreadsheets",
+      "projectTypes": ["documents", "data"],
+      "author": "Anthropic",
+      "tags": ["documents", "excel", "spreadsheets", "data"]
+    },
+    {
+      "name": "pptx",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Read and analyze PowerPoint presentations",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "powerpoint", "presentations"]
+    },
+    {
+      "name": "pdf",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Read and analyze PDF documents",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "pdf"]
+    },
+    {
+      "name": "skill-creator",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Create new Claude Code skills with best practices",
+      "projectTypes": ["skill-dev", "plugin-dev"],
+      "author": "Anthropic",
+      "tags": ["meta", "skills", "development"]
+    },
+    {
+      "name": "mcp-builder",
+      "repo": "anthropics/claude-code-plugins",
+      "description": "Build MCP servers and integrations",
+      "projectTypes": ["mcp", "plugin-dev"],
+      "author": "Anthropic",
+      "tags": ["mcp", "servers", "integration"]
+    },
+    {
+      "name": "superpowers",
+      "repo": "obra/claude-superpowers",
+      "description": "TDD workflows, debugging assistance, and collaboration patterns",
+      "projectTypes": ["development", "testing"],
+      "author": "Jesse Vincent",
+      "tags": ["tdd", "debugging", "workflow"]
+    },
+    {
+      "name": "devops-automation-pack",
+      "repo": "jeremylongshore/devops-automation-pack",
+      "description": "CI/CD pipelines, infrastructure automation, and DevOps workflows",
+      "projectTypes": ["devops", "infrastructure"],
+      "author": "Jeremy Longshore",
+      "tags": ["devops", "ci-cd", "infrastructure", "automation"]
+    },
+    {
+      "name": "kubernetes-operations",
+      "repo": "wshobson/kubernetes-operations",
+      "description": "Kubernetes deployment, debugging, and operations",
+      "projectTypes": ["devops", "kubernetes"],
+      "author": "Seth Hobson",
+      "tags": ["kubernetes", "k8s", "containers", "devops"]
+    },
+    {
+      "name": "python-development",
+      "repo": "wshobson/python-development",
+      "description": "Python project scaffolding, testing, and best practices",
+      "projectTypes": ["python"],
+      "author": "Seth Hobson",
+      "tags": ["python", "testing", "scaffolding"]
+    },
+    {
+      "name": "git-commit-smart",
+      "repo": "jeremylongshore/git-commit-smart",
+      "description": "AI-powered commit messages and git workflow automation",
+      "projectTypes": ["development"],
+      "author": "Jeremy Longshore",
+      "tags": ["git", "commits", "workflow"]
+    }
+  ],
+  "projectTypeMapping": {
+    "frontend": ["dev-browser", "frontend-design", "webapp-testing"],
+    "webapp": ["dev-browser", "webapp-testing", "frontend-design"],
+    "python": ["python-development", "superpowers"],
+    "node": ["webapp-testing", "superpowers"],
+    "devops": ["devops-automation-pack", "kubernetes-operations"],
+    "kubernetes": ["kubernetes-operations", "devops-automation-pack"],
+    "documents": ["docx", "xlsx", "pptx", "pdf"],
+    "data": ["xlsx", "pdf"],
+    "testing": ["webapp-testing", "superpowers", "dev-browser"],
+    "skill-dev": ["skill-creator", "mcp-builder"],
+    "plugin-dev": ["skill-creator", "mcp-builder"],
+    "mcp": ["mcp-builder"],
+    "development": ["superpowers", "git-commit-smart"]
+  },
+  "projectSignals": {
+    "frontend": {
+      "files": ["package.json"],
+      "dependencies": ["react", "vue", "angular", "svelte", "next", "nuxt", "vite"]
+    },
+    "node": {
+      "files": ["package.json"],
+      "dependencies": ["express", "fastify", "koa", "hapi", "nest"]
+    },
+    "python": {
+      "files": ["requirements.txt", "pyproject.toml", "setup.py", "Pipfile"]
+    },
+    "devops": {
+      "files": ["Dockerfile", "docker-compose.yml", "docker-compose.yaml", ".github/workflows"]
+    },
+    "kubernetes": {
+      "files": ["k8s/", "kubernetes/", "helm/", "Chart.yaml"]
+    },
+    "documents": {
+      "extensions": [".docx", ".xlsx", ".pptx", ".pdf"]
+    },
+    "skill-dev": {
+      "files": ["SKILL.md", ".claude-plugin/"]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "description": "Suggests relevant skills based on project context at session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/suggest-skills.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
