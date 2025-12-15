@@ -1,0 +1,20 @@
+{
+  "name": "thats2easyyy",
+  "owner": {
+    "name": "Tyler Nishida"
+  },
+  "plugins": [
+    {
+      "name": "skills-advisor",
+      "source": ".",
+      "description": "Contextually suggests relevant Claude Code skills based on your project type",
+      "version": "1.0.0",
+      "author": {
+        "name": "Tyler Nishida"
+      },
+      "repository": "https://github.com/thats2easyyy/skills-advisor",
+      "keywords": ["skills", "discovery", "recommendations"],
+      "category": "productivity"
+    }
+  ]
+}
