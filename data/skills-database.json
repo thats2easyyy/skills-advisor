@@ -1,134 +1,305 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2024-12-14",
+  "version": "2.0.0",
+  "lastUpdated": "2024-12-15",
   "skills": [
+    {
+      "name": "superpowers",
+      "repo": "obra/superpowers",
+      "description": "TDD workflows, debugging, brainstorming, and collaboration patterns",
+      "projectTypes": ["development", "testing"],
+      "author": "Jesse Vincent",
+      "tags": ["tdd", "debugging", "workflow", "brainstorming"],
+      "stars": 9800,
+      "tier": "featured",
+      "verified": true
+    },
+    {
+      "name": "agents",
+      "repo": "wshobson/agents",
+      "description": "Multi-agent orchestration and coordination patterns",
+      "projectTypes": ["development", "orchestration"],
+      "author": "Seth Hobson",
+      "tags": ["agents", "orchestration", "multi-agent"],
+      "stars": 22800,
+      "tier": "featured",
+      "verified": true
+    },
+    {
+      "name": "claude-mem",
+      "repo": "thedotmack/claude-mem",
+      "description": "Persistent memory across Claude Code sessions",
+      "projectTypes": ["development"],
+      "author": "dotmack",
+      "tags": ["memory", "persistence", "context"],
+      "stars": 6300,
+      "tier": "featured",
+      "verified": true
+    },
+    {
+      "name": "pdf",
+      "repo": "anthropics/skills",
+      "description": "Read and analyze PDF documents",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "pdf"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "docx",
+      "repo": "anthropics/skills",
+      "description": "Read and analyze Word documents",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "word", "office"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "xlsx",
+      "repo": "anthropics/skills",
+      "description": "Read and analyze Excel spreadsheets",
+      "projectTypes": ["documents", "data"],
+      "author": "Anthropic",
+      "tags": ["documents", "excel", "spreadsheets", "data"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "pptx",
+      "repo": "anthropics/skills",
+      "description": "Read and analyze PowerPoint presentations",
+      "projectTypes": ["documents"],
+      "author": "Anthropic",
+      "tags": ["documents", "powerpoint", "presentations"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "skill-creator",
+      "repo": "anthropics/skills",
+      "description": "Create new Claude Code skills with best practices",
+      "projectTypes": ["skill-dev", "plugin-dev"],
+      "author": "Anthropic",
+      "tags": ["meta", "skills", "development"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "mcp-builder",
+      "repo": "anthropics/skills",
+      "description": "Build MCP servers and integrations",
+      "projectTypes": ["mcp", "plugin-dev"],
+      "author": "Anthropic",
+      "tags": ["mcp", "servers", "integration"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "webapp-testing",
+      "repo": "anthropics/skills",
+      "description": "Automated testing for web applications with Playwright",
+      "projectTypes": ["frontend", "webapp", "testing"],
+      "author": "Anthropic",
+      "tags": ["testing", "playwright", "e2e"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "algorithmic-art",
+      "repo": "anthropics/skills",
+      "description": "Generate algorithmic and generative art",
+      "projectTypes": ["creative"],
+      "author": "Anthropic",
+      "tags": ["art", "generative", "creative"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "canvas-design",
+      "repo": "anthropics/skills",
+      "description": "Create designs and graphics using HTML canvas",
+      "projectTypes": ["creative", "frontend"],
+      "author": "Anthropic",
+      "tags": ["design", "canvas", "graphics"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "artifacts-builder",
+      "repo": "anthropics/skills",
+      "description": "Build interactive artifacts and components",
+      "projectTypes": ["development", "frontend"],
+      "author": "Anthropic",
+      "tags": ["artifacts", "interactive", "components"],
+      "stars": 21000,
+      "tier": "official",
+      "verified": true
+    },
+    {
+      "name": "claude-scientific-skills",
+      "repo": "K-Dense-AI/claude-scientific-skills",
+      "description": "Scientific research, data analysis, and academic writing",
+      "projectTypes": ["research", "data"],
+      "author": "K-Dense-AI",
+      "tags": ["science", "research", "academic", "analysis"],
+      "stars": 2000,
+      "tier": "community",
+      "verified": true
+    },
+    {
+      "name": "playwright-skill",
+      "repo": "lackeyjb/playwright-skill",
+      "description": "Advanced Playwright testing patterns and utilities",
+      "projectTypes": ["testing", "frontend"],
+      "author": "lackeyjb",
+      "tags": ["playwright", "testing", "e2e", "automation"],
+      "stars": 901,
+      "tier": "community",
+      "verified": true
+    },
+    {
+      "name": "claude-code-settings",
+      "repo": "feiskyer/claude-code-settings",
+      "description": "Optimized Claude Code configuration and settings",
+      "projectTypes": ["development"],
+      "author": "feiskyer",
+      "tags": ["config", "settings", "optimization"],
+      "stars": 903,
+      "tier": "community",
+      "verified": true
+    },
+    {
+      "name": "ios-simulator-skill",
+      "repo": "conorluddy/ios-simulator-skill",
+      "description": "Control iOS Simulator for mobile app testing",
+      "projectTypes": ["mobile", "ios", "testing"],
+      "author": "conorluddy",
+      "tags": ["ios", "mobile", "simulator", "testing"],
+      "stars": 168,
+      "tier": "community",
+      "verified": true
+    },
+    {
+      "name": "coderunner",
+      "repo": "instavm/coderunner",
+      "description": "Sandboxed code execution environment",
+      "projectTypes": ["development", "testing"],
+      "author": "instavm",
+      "tags": ["sandbox", "execution", "testing"],
+      "stars": 647,
+      "tier": "community",
+      "verified": true
+    },
+    {
+      "name": "pg-aiguide",
+      "repo": "timescale/pg-aiguide",
+      "description": "PostgreSQL database design and query optimization",
+      "projectTypes": ["database", "backend"],
+      "author": "Timescale",
+      "tags": ["postgres", "database", "sql", "optimization"],
+      "stars": 159,
+      "tier": "community",
+      "verified": true
+    },
     {
       "name": "dev-browser",
       "repo": "AshkanAe/dev-browser",
       "description": "Control a real browser for testing, screenshots, and web automation",
       "projectTypes": ["frontend", "webapp", "testing"],
       "author": "Sawyer Hood",
-      "tags": ["browser", "testing", "screenshots", "automation"]
+      "tags": ["browser", "testing", "screenshots", "automation"],
+      "stars": 500,
+      "tier": "community",
+      "verified": true
     },
     {
-      "name": "frontend-design",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Guidance on typography, spacing, animations, and visual details",
-      "projectTypes": ["frontend", "webapp", "design"],
-      "author": "Anthropic",
-      "tags": ["design", "css", "ui", "ux"]
+      "name": "claude-hooks",
+      "repo": "johnlindquist/claude-hooks",
+      "description": "TypeScript framework for Claude Code hooks",
+      "projectTypes": ["development", "plugin-dev"],
+      "author": "John Lindquist",
+      "tags": ["hooks", "typescript", "framework"],
+      "stars": 400,
+      "tier": "community",
+      "verified": true
     },
     {
-      "name": "webapp-testing",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Automated testing for web applications with Playwright",
-      "projectTypes": ["frontend", "webapp", "testing"],
-      "author": "Anthropic",
-      "tags": ["testing", "playwright", "e2e"]
+      "name": "tapestry",
+      "repo": "BehiSecc/awesome-claude-skills",
+      "description": "Convert API documentation into queryable knowledge base",
+      "projectTypes": ["research", "documentation"],
+      "author": "BehiSecc",
+      "tags": ["api", "documentation", "knowledge-base"],
+      "stars": 300,
+      "tier": "community",
+      "verified": false
     },
     {
-      "name": "docx",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Read and analyze Word documents",
-      "projectTypes": ["documents"],
-      "author": "Anthropic",
-      "tags": ["documents", "word", "office"]
+      "name": "youtube-transcript",
+      "repo": "BehiSecc/awesome-claude-skills",
+      "description": "Extract and analyze YouTube video transcripts",
+      "projectTypes": ["research", "content"],
+      "author": "BehiSecc",
+      "tags": ["youtube", "transcripts", "research"],
+      "stars": 250,
+      "tier": "community",
+      "verified": false
     },
     {
-      "name": "xlsx",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Read and analyze Excel spreadsheets",
-      "projectTypes": ["documents", "data"],
-      "author": "Anthropic",
-      "tags": ["documents", "excel", "spreadsheets", "data"]
+      "name": "web-asset-generator",
+      "repo": "alonw0/web-asset-generator",
+      "description": "Generate web assets, icons, and graphics",
+      "projectTypes": ["frontend", "design"],
+      "author": "alonw0",
+      "tags": ["assets", "icons", "graphics", "web"],
+      "stars": 200,
+      "tier": "community",
+      "verified": false
     },
     {
-      "name": "pptx",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Read and analyze PowerPoint presentations",
-      "projectTypes": ["documents"],
-      "author": "Anthropic",
-      "tags": ["documents", "powerpoint", "presentations"]
-    },
-    {
-      "name": "pdf",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Read and analyze PDF documents",
-      "projectTypes": ["documents"],
-      "author": "Anthropic",
-      "tags": ["documents", "pdf"]
-    },
-    {
-      "name": "skill-creator",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Create new Claude Code skills with best practices",
-      "projectTypes": ["skill-dev", "plugin-dev"],
-      "author": "Anthropic",
-      "tags": ["meta", "skills", "development"]
-    },
-    {
-      "name": "mcp-builder",
-      "repo": "anthropics/claude-code-plugins",
-      "description": "Build MCP servers and integrations",
-      "projectTypes": ["mcp", "plugin-dev"],
-      "author": "Anthropic",
-      "tags": ["mcp", "servers", "integration"]
-    },
-    {
-      "name": "superpowers",
-      "repo": "obra/claude-superpowers",
-      "description": "TDD workflows, debugging assistance, and collaboration patterns",
-      "projectTypes": ["development", "testing"],
-      "author": "Jesse Vincent",
-      "tags": ["tdd", "debugging", "workflow"]
-    },
-    {
-      "name": "devops-automation-pack",
-      "repo": "jeremylongshore/devops-automation-pack",
-      "description": "CI/CD pipelines, infrastructure automation, and DevOps workflows",
-      "projectTypes": ["devops", "infrastructure"],
-      "author": "Jeremy Longshore",
-      "tags": ["devops", "ci-cd", "infrastructure", "automation"]
-    },
-    {
-      "name": "kubernetes-operations",
-      "repo": "wshobson/kubernetes-operations",
-      "description": "Kubernetes deployment, debugging, and operations",
-      "projectTypes": ["devops", "kubernetes"],
-      "author": "Seth Hobson",
-      "tags": ["kubernetes", "k8s", "containers", "devops"]
-    },
-    {
-      "name": "python-development",
-      "repo": "wshobson/python-development",
-      "description": "Python project scaffolding, testing, and best practices",
-      "projectTypes": ["python"],
-      "author": "Seth Hobson",
-      "tags": ["python", "testing", "scaffolding"]
-    },
-    {
-      "name": "git-commit-smart",
-      "repo": "jeremylongshore/git-commit-smart",
-      "description": "AI-powered commit messages and git workflow automation",
-      "projectTypes": ["development"],
-      "author": "Jeremy Longshore",
-      "tags": ["git", "commits", "workflow"]
+      "name": "ffuf-claude-skill",
+      "repo": "jthack/ffuf_claude_skill",
+      "description": "Security fuzzing and vulnerability analysis",
+      "projectTypes": ["security", "testing"],
+      "author": "jthack",
+      "tags": ["security", "fuzzing", "pentesting"],
+      "stars": 180,
+      "tier": "community",
+      "verified": false
     }
   ],
   "projectTypeMapping": {
-    "frontend": ["dev-browser", "frontend-design", "webapp-testing"],
-    "webapp": ["dev-browser", "webapp-testing", "frontend-design"],
-    "python": ["python-development", "superpowers"],
+    "frontend": ["webapp-testing", "dev-browser", "playwright-skill", "canvas-design", "web-asset-generator"],
+    "webapp": ["webapp-testing", "dev-browser", "playwright-skill"],
+    "python": ["superpowers", "coderunner"],
     "node": ["webapp-testing", "superpowers"],
-    "devops": ["devops-automation-pack", "kubernetes-operations"],
-    "kubernetes": ["kubernetes-operations", "devops-automation-pack"],
+    "devops": ["coderunner"],
+    "kubernetes": ["coderunner"],
     "documents": ["docx", "xlsx", "pptx", "pdf"],
-    "data": ["xlsx", "pdf"],
-    "testing": ["webapp-testing", "superpowers", "dev-browser"],
-    "skill-dev": ["skill-creator", "mcp-builder"],
-    "plugin-dev": ["skill-creator", "mcp-builder"],
+    "data": ["xlsx", "pdf", "claude-scientific-skills"],
+    "testing": ["webapp-testing", "superpowers", "dev-browser", "playwright-skill", "coderunner"],
+    "skill-dev": ["skill-creator", "mcp-builder", "claude-hooks"],
+    "plugin-dev": ["skill-creator", "mcp-builder", "claude-hooks"],
     "mcp": ["mcp-builder"],
-    "development": ["superpowers", "git-commit-smart"]
+    "development": ["superpowers", "agents", "claude-mem", "claude-code-settings", "artifacts-builder"],
+    "mobile": ["ios-simulator-skill"],
+    "ios": ["ios-simulator-skill"],
+    "database": ["pg-aiguide"],
+    "backend": ["pg-aiguide", "superpowers"],
+    "research": ["claude-scientific-skills", "tapestry", "youtube-transcript"],
+    "security": ["ffuf-claude-skill"],
+    "creative": ["algorithmic-art", "canvas-design"],
+    "orchestration": ["agents"]
   },
   "projectSignals": {
     "frontend": {
@@ -153,6 +324,16 @@
     },
     "skill-dev": {
       "files": ["SKILL.md", ".claude-plugin/"]
+    },
+    "mobile": {
+      "files": ["ios/", "android/", "*.xcodeproj", "*.xcworkspace"]
+    },
+    "database": {
+      "files": ["schema.sql", "migrations/", "*.prisma"]
+    },
+    "security": {
+      "files": [".security", "security/", "pentest/"]
     }
-  }
+  },
+  "popularSkills": ["agents", "superpowers", "claude-mem", "pdf", "webapp-testing"]
 }

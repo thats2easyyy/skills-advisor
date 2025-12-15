@@ -1,129 +1,120 @@
 # Skills Advisor
 
-**Contextual skill recommendations for Claude Code**
+**Contextual skill discovery and workflow coaching for Claude Code**
 
-Skills Advisor automatically suggests relevant Claude Code skills based on your project type. No more searching Twitter or Discord to find useful skills - they come to you.
+Skills Advisor brings skill discovery INTO your workflow. It suggests relevant skills based on your project AND recognizes when you should create new ones.
 
-## The Problem
+## Two Modes
 
-Claude Code skills are powerful, but discovering them is hard:
-- No centralized directory
-- Word-of-mouth discovery only
-- You have to already know what you're looking for
-- Skills don't surface when they'd actually help
+### 1. Discovery Mode (SessionStart)
 
-## The Solution
+Automatically suggests relevant skills when you start Claude Code:
 
-Skills Advisor uses a SessionStart hook to:
-1. Detect your project type (React, Python, DevOps, etc.)
-2. Match against a curated skills database
-3. Show relevant recommendations automatically
+```
+Skills Advisor
 
-**Like Neo in The Matrix** - the right capabilities are suggested based on context.
+Detected: Frontend (React/Vue/Angular)
+
+Recommended for this project:
+
+   webapp-testing           21k
+   dev-browser              500
+   playwright-skill         901
+
+Popular skills:
+
+   agents                   22.8k
+   superpowers              9.8k
+   claude-mem               6.3k
+
+Install: /plugin install [repo]
+Browse:  /skills-explore
+```
+
+### 2. Coaching Mode (During Conversation)
+
+Recognizes when you're describing a repeatable workflow and suggests creating a skill:
+
+> "I noticed this looks like a repeatable workflow. If you do this regularly, I can help package it as a reusable skill."
+
+**Trigger signals:**
+- "like I always do" / "as usual" / "every time"
+- Template uploads with "use this format"
+- Multi-step instructions with specific output requirements
+- Consistent correction patterns ("always put X first")
 
 ## Installation
 
 ```bash
-# Add the marketplace
-/plugin marketplace add thats2easyyy/skills-advisor
-
-# Install the plugin
-/plugin install skills-advisor@thats2easyyy
+/plugin install thats2easyyy/skills-advisor
 ```
 
-## What You'll See
+## What You Get
 
-When you open Claude Code in a React project:
-
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💡 Skills Advisor
-
-📦 Project detected: Frontend (React/Vue/Angular)
-
-🎯 Recommended skills for this project:
-
-   • dev-browser
-     Control a real browser for testing, screenshots, and web automation
-
-   • frontend-design
-     Guidance on typography, spacing, animations, and visual details
-
-   • webapp-testing
-     Automated testing for web applications with Playwright
-
-📥 Install with: /plugin install [repo-name]
-
-   Example: /plugin install AshkanAe/dev-browser
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-## Supported Project Types
-
-| Project Type | Detection Signal |
-|-------------|------------------|
-| Frontend | package.json with react/vue/angular/svelte |
-| Node.js Backend | package.json with express/fastify/koa |
-| Python | requirements.txt, pyproject.toml, setup.py |
-| DevOps | Dockerfile, docker-compose.yml, .github/workflows |
-| Kubernetes | k8s/, kubernetes/, helm/, Chart.yaml |
-| Documents | .docx, .xlsx, .pptx, .pdf files present |
-| Skill Development | SKILL.md or .claude-plugin/ present |
+| Feature | What It Does |
+|---------|-------------|
+| **Project detection** | Identifies React, Python, DevOps, K8s, mobile, and more |
+| **Smart recommendations** | Skills matched to your actual project type |
+| **Installation status** | See which skills you already have |
+| **Star counts** | Know which skills are popular |
+| **Popular skills section** | Trending skills regardless of project |
+| **Workflow coaching** | Recognizes when to suggest skill creation |
 
 ## Commands
 
 ### `/skills-refresh`
+Re-run skill detection and recommendations.
 
-Manually re-run skill suggestions. Useful if:
-- You added new project files
-- You want to see recommendations again
-- Initial detection missed something
+### `/skills-explore`
+Browse the full skills catalog with filtering by category or keyword.
+
+## Supported Project Types
+
+| Type | Detection |
+|------|-----------|
+| Frontend | package.json with react/vue/angular/svelte/next |
+| Node.js | package.json with express/fastify/koa/nest |
+| Python | requirements.txt, pyproject.toml, setup.py, Pipfile |
+| DevOps | Dockerfile, docker-compose.yml, .github/workflows |
+| Kubernetes | k8s/, helm/, Chart.yaml |
+| Mobile | ios/, android/, .xcodeproj |
+| Database | schema.sql, migrations/, .prisma |
+| Documents | .docx, .xlsx, .pptx, .pdf files |
+| Skill Dev | SKILL.md, .claude-plugin/ |
 
 ## Skills Database
 
-The plugin includes a curated database of skills:
+**25 curated skills** across tiers:
 
 **Official (Anthropic):**
-- docx, xlsx, pptx, pdf - Document handling
+- pdf, docx, xlsx, pptx - Document handling
+- webapp-testing - Playwright E2E testing
 - skill-creator - Create new skills
-- mcp-builder - Build MCP integrations
+- mcp-builder - Build MCP servers
+- algorithmic-art, canvas-design - Creative tools
+
+**Featured (Community Favorites):**
+- superpowers (9.8k) - TDD, debugging, brainstorming
+- agents (22.8k) - Multi-agent orchestration
+- claude-mem (6.3k) - Persistent memory
 
 **Community:**
-- dev-browser - Browser automation (Sawyer Hood)
-- frontend-design - UI/UX patterns
-- superpowers - TDD/debugging (Jesse Vincent)
-- devops-automation-pack - CI/CD workflows
-- kubernetes-operations - K8s management
-- python-development - Python best practices
+- playwright-skill, ios-simulator-skill, pg-aiguide
+- coderunner, claude-hooks, and more
 
 ## Requirements
 
-- `jq` must be installed for JSON parsing
+- `jq` for JSON parsing
 - Claude Code with plugin support
 
-## How It Works
+## The Philosophy
 
-```
-SessionStart hook fires
-       ↓
-Script checks for project signals:
-  - package.json dependencies
-  - requirements.txt
-  - Dockerfile
-  - etc.
-       ↓
-Matches project type to skills database
-       ↓
-Outputs formatted recommendations
-```
+> "Skills are Claude's superpower, but discovery is broken."
+
+skillsmp.com exists but it's external - you have to know to go looking. Skills Advisor brings discovery INTO the workflow.
+
+**Discovery tells you WHAT exists. Coaching tells you WHAT SHOULD exist.**
 
 ## Author
 
 Tyler Nishida
-
-## Why This Exists
-
-Skills are Claude Code's superpower, but they're invisible. This plugin makes them discoverable by surfacing the right skills at the right time.
-
-> "A directory solves WHERE. Context solves WHEN and WHY."

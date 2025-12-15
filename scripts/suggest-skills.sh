@@ -1,13 +1,55 @@
 #!/bin/bash
 
 # Skills Advisor - SessionStart Hook
-# Detects project type and suggests relevant skills
+# Detects project type and suggests relevant skills with installation status
 
 set -e
 
 PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(dirname "$(dirname "$0")")}"
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 DATABASE="$PLUGIN_ROOT/data/skills-database.json"
+PLUGINS_DIR="${HOME}/.claude/plugins"
+
+# Format star count (e.g., 22800 -> 22.8k)
+format_stars() {
+    local stars="$1"
+    if [[ $stars -ge 1000 ]]; then
+        local k=$((stars / 100))
+        local decimal=$((k % 10))
+        local whole=$((k / 10))
+        if [[ $decimal -eq 0 ]]; then
+            echo "${whole}k"
+        else
+            echo "${whole}.${decimal}k"
+        fi
+    else
+        echo "$stars"
+    fi
+}
+
+# Check if a skill/plugin is installed
+is_installed() {
+    local skill_name="$1"
+    local repo="$2"
+
+    # Check by skill name in plugins directory
+    if [[ -d "$PLUGINS_DIR/$skill_name" ]]; then
+        return 0
+    fi
+
+    # Check by repo name (last part of repo path)
+    local repo_name="${repo##*/}"
+    if [[ -d "$PLUGINS_DIR/$repo_name" ]]; then
+        return 0
+    fi
+
+    # Check in skills directory
+    if [[ -d "${HOME}/.claude/skills/$skill_name" ]]; then
+        return 0
+    fi
+
+    return 1
+}
 
 # Detect project types (can be multiple)
 detect_project_types() {
@@ -58,6 +100,21 @@ detect_project_types() {
         types+=("skill-dev")
     fi
 
+    # Check for mobile/iOS
+    if [[ -d "$PROJECT_DIR/ios" ]] || \
+       [[ -d "$PROJECT_DIR/android" ]] || \
+       ls "$PROJECT_DIR"/*.xcodeproj 2>/dev/null | head -1 > /dev/null || \
+       ls "$PROJECT_DIR"/*.xcworkspace 2>/dev/null | head -1 > /dev/null; then
+        types+=("mobile")
+    fi
+
+    # Check for database projects
+    if [[ -f "$PROJECT_DIR/schema.sql" ]] || \
+       [[ -d "$PROJECT_DIR/migrations" ]] || \
+       ls "$PROJECT_DIR"/*.prisma 2>/dev/null | head -1 > /dev/null; then
+        types+=("database")
+    fi
+
     # Check for documents
     if ls "$PROJECT_DIR"/*.docx "$PROJECT_DIR"/*.xlsx "$PROJECT_DIR"/*.pptx "$PROJECT_DIR"/*.pdf 2>/dev/null | head -1 > /dev/null; then
         types+=("documents")
@@ -75,7 +132,6 @@ get_skills_for_type() {
         return
     fi
 
-    # Use jq if available, otherwise fall back to grep
     if command -v jq &> /dev/null; then
         jq -r --arg type "$type" '.projectTypeMapping[$type] // [] | .[]' "$DATABASE" 2>/dev/null
     fi
@@ -86,7 +142,14 @@ get_skill_details() {
     local skill_name="$1"
 
     if command -v jq &> /dev/null && [[ -f "$DATABASE" ]]; then
-        jq -r --arg name "$skill_name" '.skills[] | select(.name == $name) | "\(.name)|\(.description)|\(.repo)"' "$DATABASE" 2>/dev/null
+        jq -r --arg name "$skill_name" '.skills[] | select(.name == $name) | "\(.name)|\(.description)|\(.repo)|\(.stars)|\(.tier)"' "$DATABASE" 2>/dev/null
+    fi
+}
+
+# Get popular skills
+get_popular_skills() {
+    if command -v jq &> /dev/null && [[ -f "$DATABASE" ]]; then
+        jq -r '.popularSkills[]' "$DATABASE" 2>/dev/null
     fi
 }
 
@@ -102,15 +165,31 @@ format_project_type() {
         documents) echo "Documents" ;;
         skill-dev) echo "Skill/Plugin Development" ;;
         development) echo "Development" ;;
+        mobile) echo "Mobile/iOS" ;;
+        database) echo "Database" ;;
         *) echo "$type" ;;
     esac
+}
+
+# Print a skill line with status and stars
+print_skill_line() {
+    local name="$1"
+    local stars="$2"
+    local repo="$3"
+
+    if is_installed "$name" "$repo"; then
+        printf "   ⚡ %-22s ★ %-6s (installed)\n" "$name" "$(format_stars "$stars")"
+    else
+        printf "   📥 %-22s ★ %-6s\n" "$name" "$(format_stars "$stars")"
+    fi
 }
 
 # Main execution
 main() {
     # Check for jq (required for JSON parsing)
     if ! command -v jq &> /dev/null; then
-        echo "⚠️  Skills Advisor: jq not found, suggestions disabled"
+        echo ""
+        echo "Skills Advisor: jq not found, suggestions disabled"
         exit 0
     fi
 
@@ -119,11 +198,28 @@ main() {
     project_types=$(detect_project_types)
 
     if [[ -z "$project_types" ]]; then
-        # No specific project type detected, show general message
+        # No specific project type detected, show popular skills only
         echo ""
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo "💡 Skills Advisor"
+        echo ""
         echo "   No specific project type detected."
+        echo ""
+        echo "🔥 Popular skills:"
+        echo ""
+        while IFS= read -r skill; do
+            [[ -z "$skill" ]] && continue
+            local details
+            details=$(get_skill_details "$skill")
+            if [[ -n "$details" ]]; then
+                local name desc repo stars tier
+                IFS='|' read -r name desc repo stars tier <<< "$details"
+                print_skill_line "$name" "$stars" "$repo"
+            fi
+        done <<< "$(get_popular_skills)"
+        echo ""
         echo "   Run /skills-refresh after adding project files."
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo ""
         exit 0
     fi
@@ -150,33 +246,53 @@ main() {
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "💡 Skills Advisor"
     echo ""
-    echo "📦 Project detected: ${type_names[*]}"
+    echo "📦 Detected: ${type_names[*]}"
     echo ""
 
     if [[ ${#all_skills[@]} -gt 0 ]]; then
-        echo "🎯 Recommended skills for this project:"
+        echo "🎯 Recommended for this project:"
         echo ""
 
+        # Limit to top 5 recommendations
+        local count=0
         for skill in "${all_skills[@]}"; do
+            [[ $count -ge 5 ]] && break
             local details
             details=$(get_skill_details "$skill")
             if [[ -n "$details" ]]; then
-                local name desc repo
-                IFS='|' read -r name desc repo <<< "$details"
-                echo "   • $name"
-                echo "     $desc"
-                echo ""
+                local name desc repo stars tier
+                IFS='|' read -r name desc repo stars tier <<< "$details"
+                print_skill_line "$name" "$stars" "$repo"
+                ((count++))
             fi
         done
-
-        echo "📥 Install with: /plugin install [repo-name]"
         echo ""
-        echo "   Example: /plugin install AshkanAe/dev-browser"
-    else
-        echo "   No specific skill recommendations for this project type."
     fi
 
+    # Show popular skills (excluding already recommended)
+    echo "🔥 Popular skills:"
     echo ""
+    local pop_count=0
+    while IFS= read -r skill; do
+        [[ -z "$skill" ]] && continue
+        [[ $pop_count -ge 3 ]] && break
+        # Skip if already in recommendations
+        if [[ " ${all_skills[*]} " =~ " ${skill} " ]]; then
+            continue
+        fi
+        local details
+        details=$(get_skill_details "$skill")
+        if [[ -n "$details" ]]; then
+            local name desc repo stars tier
+            IFS='|' read -r name desc repo stars tier <<< "$details"
+            print_skill_line "$name" "$stars" "$repo"
+            ((pop_count++))
+        fi
+    done <<< "$(get_popular_skills)"
+    echo ""
+
+    echo "   Install: /plugin install [repo]"
+    echo "   Browse:  /skills-explore"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 }
