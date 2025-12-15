@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "skills-advisor",
-      "source": ".",
+      "source": "./",
       "description": "Contextually suggests relevant Claude Code skills based on your project type",
       "version": "1.0.0",
       "author": {
