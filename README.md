@@ -24,7 +24,7 @@ Skills Advisor uses a SessionStart hook to:
 ## Installation
 
 ```bash
-/plugin install tylernishida/skills-advisor
+/plugin install thats2easyyy/skills-advisor
 ```
 
 ## What You'll See
