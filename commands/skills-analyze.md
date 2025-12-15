@@ -108,7 +108,10 @@ Format your analysis with TWO sections:
    • [skill-name] - [why it matches these patterns]
 
    Skills you should create:
-   • "[Suggested skill name]" - [what it would automate]
+
+   • "[Skill name]"
+     Run: /skill-creator "[Detailed description including specific
+     files, patterns, and what the skill should automate]"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -122,9 +125,11 @@ Format your analysis with TWO sections:
    • [skill-name] - [why it matches these patterns]
 
    Skills you should create:
-   • "[Suggested skill name]" - [description of the workflow]
 
-   Use skill-creator to build custom skills.
+   • "[Skill name]"
+     Run: /skill-creator "[Detailed description of the workflow
+     pattern and what the skill should do]"
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -138,4 +143,4 @@ Format your analysis with TWO sections:
 - THIS PROJECT patterns should be concrete and actionable (specific files, counts)
 - ACROSS ALL PROJECTS patterns show cross-project workflow habits
 - Be specific about why a skill matches a pattern
-- For skill creation suggestions, explain what the skill would do
+- For skill creation suggestions, provide a ready-to-run `/skill-creator` command with detailed context from your analysis
