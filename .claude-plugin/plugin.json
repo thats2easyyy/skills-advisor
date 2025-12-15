@@ -1,7 +1,7 @@
 {
   "name": "skills-advisor",
   "description": "Contextually suggests relevant Claude Code skills based on your project type. Automatically detects React, Python, DevOps, and other project types and recommends skills that would help.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": {
     "name": "Tyler Nishida"
   }

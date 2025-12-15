@@ -58,7 +58,7 @@ Look for:
 
 Run the extraction script to get prompts from the last 30 days:
 ```bash
-bash $PLUGIN_ROOT/scripts/extract-history.sh
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/extract-history.sh
 ```
 
 ### Step 2.2: Analyze Patterns Semantically
@@ -81,7 +81,7 @@ Read through the extracted prompts and identify:
 
 Read the skills database:
 ```
-$PLUGIN_ROOT/data/skills-database.json
+${CLAUDE_PLUGIN_ROOT}/data/skills-database.json
 ```
 
 For each detected pattern, check if an existing skill matches:
