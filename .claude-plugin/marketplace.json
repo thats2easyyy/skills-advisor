@@ -8,7 +8,7 @@
       "name": "skills-advisor",
       "source": "./",
       "description": "Contextually suggests relevant Claude Code skills based on your project type",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Tyler Nishida"
       },
