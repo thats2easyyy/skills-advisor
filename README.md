@@ -31,17 +31,32 @@ Install: /plugin install [repo]
 Browse:  /skills-explore
 ```
 
-### 2. Coaching Mode (During Conversation)
+### 2. Analysis Mode (`/skills-analyze`)
 
-Recognizes when you're describing a repeatable workflow and suggests creating a skill:
+Analyzes your conversation history to identify patterns and recommend skills:
 
-> "I noticed this looks like a repeatable workflow. If you do this regularly, I can help package it as a reusable skill."
+```
+🔍 Skills Analysis
 
-**Trigger signals:**
-- "like I always do" / "as usual" / "every time"
-- Template uploads with "use this format"
-- Multi-step instructions with specific output requirements
-- Consistent correction patterns ("always put X first")
+Based on your last 30 days of work:
+
+📊 Your patterns:
+   • Bug fixing (23 times)
+   • Writing tests (18 times)
+   • Creating PRs (15 times)
+
+💡 Recommended skills:
+   superpowers - Matches your debugging patterns
+   webapp-testing - Matches your testing patterns
+
+🛠️ Skills you should create:
+   • "Weekly status report" - You've done this 4 times
+   • "PR description writer" - Consistent structure detected
+
+   Use skill-creator to build these.
+```
+
+**Why this matters:** Users don't know what skills to create. This shows you YOUR patterns and suggests skills based on YOUR actual work.
 
 ## Installation
 
