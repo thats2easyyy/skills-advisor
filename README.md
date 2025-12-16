@@ -6,29 +6,28 @@ Skills Advisor brings skill discovery INTO your workflow. It suggests relevant s
 
 ## Two Modes
 
-### 1. Discovery Mode (SessionStart)
+### 1. Discovery Mode (`/skills-refresh`)
 
-Automatically suggests relevant skills when you start Claude Code:
+Suggests relevant skills based on your project type:
 
 ```
-Skills Advisor
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔍 Skills Discovery
 
-Detected: Frontend (React/Vue/Angular)
+   Detected: Frontend (React/Vue/Angular)
 
-Recommended for this project:
+   Recommended for this project:
+   webapp-testing - 21k stars
+   dev-browser (installed) - 500 stars
 
-   webapp-testing           21k
-   dev-browser              500
-   playwright-skill         901
+   Popular skills:
+   superpowers - 9.8k stars
+   agents - 22.8k stars
 
-Popular skills:
-
-   agents                   22.8k
-   superpowers              9.8k
-   claude-mem               6.3k
-
-Install: /plugin install [repo]
-Browse:  /skills-explore
+   Install: /plugin install [repo]
+   Browse:  /skills-explore
+   Analyze: /skills-analyze
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ### 2. Hybrid Analysis Mode (`/skills-analyze`)

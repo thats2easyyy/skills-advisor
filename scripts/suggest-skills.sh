@@ -178,9 +178,9 @@ print_skill_line() {
     local repo="$3"
 
     if is_installed "$name" "$repo"; then
-        printf "   ⚡ %-22s ★ %-6s (installed)\n" "$name" "$(format_stars "$stars")"
+        printf "   %s (installed) - %s stars\n" "$name" "$(format_stars "$stars")"
     else
-        printf "   📥 %-22s ★ %-6s\n" "$name" "$(format_stars "$stars")"
+        printf "   %s - %s stars\n" "$name" "$(format_stars "$stars")"
     fi
 }
 
@@ -201,12 +201,11 @@ main() {
         # No specific project type detected, show popular skills only
         echo ""
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "💡 Skills Advisor"
+        echo "🔍 Skills Discovery"
         echo ""
         echo "   No specific project type detected."
         echo ""
-        echo "🔥 Popular skills:"
-        echo ""
+        echo "   Popular skills:"
         while IFS= read -r skill; do
             [[ -z "$skill" ]] && continue
             local details
@@ -244,14 +243,13 @@ main() {
     # Output suggestions
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "💡 Skills Advisor"
+    echo "🔍 Skills Discovery"
     echo ""
-    echo "📦 Detected: ${type_names[*]}"
+    echo "   Detected: ${type_names[*]}"
     echo ""
 
     if [[ ${#all_skills[@]} -gt 0 ]]; then
-        echo "🎯 Recommended for this project:"
-        echo ""
+        echo "   Recommended for this project:"
 
         # Limit to top 5 recommendations
         local count=0
@@ -270,8 +268,7 @@ main() {
     fi
 
     # Show popular skills (excluding already recommended)
-    echo "🔥 Popular skills:"
-    echo ""
+    echo "   Popular skills:"
     local pop_count=0
     while IFS= read -r skill; do
         [[ -z "$skill" ]] && continue
@@ -293,6 +290,7 @@ main() {
 
     echo "   Install: /plugin install [repo]"
     echo "   Browse:  /skills-explore"
+    echo "   Analyze: /skills-analyze"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 }
