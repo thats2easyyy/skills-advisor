@@ -92,7 +92,7 @@ For each detected pattern, check if an existing skill matches:
 
 ## Part 4: Generate Output
 
-Format your analysis with TWO sections:
+Format your analysis with TWO sections. Use plain text only inside the box (no markdown like **bold**).
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -101,17 +101,20 @@ Format your analysis with TWO sections:
 📂 THIS PROJECT:
 
    Patterns detected:
-   • [Pattern from git/codebase] (specific files/counts)
-   • [Pattern from git/codebase] (specific files/counts)
+   • [Pattern] (specific files/counts)
+   • [Pattern] (specific files/counts)
 
    Existing skills that match:
-   • [skill-name] - [why it matches these patterns]
+   [skill-name] - [why it matches]
+   [skill-name] - [why it matches]
 
-   Skills you should create:
+   Skills you should create (copy and paste):
 
-   • "[Skill name]"
-     Run: /skill-creator "[Detailed description including specific
-     files, patterns, and what the skill should automate]"
+   "[skill-name]"
+   /skill-creator "[Concise description with specific files and what to automate]"
+
+   "[skill-name]"
+   /skill-creator "[Concise description]"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -122,13 +125,12 @@ Format your analysis with TWO sections:
    • [Pattern] (N times)
 
    Existing skills that match:
-   • [skill-name] - [why it matches these patterns]
+   [skill-name] - [why it matches]
 
-   Skills you should create:
+   Skills you should create (copy and paste):
 
-   • "[Skill name]"
-     Run: /skill-creator "[Detailed description of the workflow
-     pattern and what the skill should do]"
+   "[skill-name]"
+   /skill-creator "[Concise workflow description]"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
@@ -143,4 +145,5 @@ Format your analysis with TWO sections:
 - THIS PROJECT patterns should be concrete and actionable (specific files, counts)
 - ACROSS ALL PROJECTS patterns show cross-project workflow habits
 - Be specific about why a skill matches a pattern
-- For skill creation suggestions, provide a ready-to-run `/skill-creator` command with detailed context from your analysis
+- For skill creation suggestions, put the `/skill-creator` command on its own line (no "Run:" prefix) so users can easily copy it
+- Keep descriptions concise - one line when possible
