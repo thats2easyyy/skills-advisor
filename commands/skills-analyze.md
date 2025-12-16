@@ -92,48 +92,17 @@ For each detected pattern, check if an existing skill matches:
 
 ## Part 4: Generate Output
 
-Format your analysis with TWO sections. Use plain text only inside the box (no markdown like **bold**).
+Structure your analysis with TWO main sections:
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔍 Skills Analysis
+1. **This Project** - Based on git log and codebase scan
+2. **Across All Projects** - Based on conversation history
 
-📂 THIS PROJECT:
+Each section should include:
+- **Patterns detected** - Specific patterns with evidence (file counts, commit counts)
+- **Existing skills that match** - Skills from the database that fit these patterns
+- **Skills you should create** - Custom skills with `/skill-creator` commands
 
-   Patterns detected:
-   • [Pattern] (specific files/counts)
-   • [Pattern] (specific files/counts)
-
-   Existing skills that match:
-   [skill-name] - [why it matches]
-   [skill-name] - [why it matches]
-
-   Skills you should create (copy and paste):
-
-   "[skill-name]"
-   /skill-creator "[Concise description with specific files and what to automate]"
-
-   "[skill-name]"
-   /skill-creator "[Concise description]"
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🌐 ACROSS ALL PROJECTS:
-
-   Patterns detected:
-   • [Pattern] (N times)
-   • [Pattern] (N times)
-
-   Existing skills that match:
-   [skill-name] - [why it matches]
-
-   Skills you should create (copy and paste):
-
-   "[skill-name]"
-   /skill-creator "[Concise workflow description]"
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
+For skill creation suggestions, put each `/skill-creator` command on its own line for easy copy-paste.
 
 ---
 
@@ -145,5 +114,3 @@ Format your analysis with TWO sections. Use plain text only inside the box (no m
 - THIS PROJECT patterns should be concrete and actionable (specific files, counts)
 - ACROSS ALL PROJECTS patterns show cross-project workflow habits
 - Be specific about why a skill matches a pattern
-- For skill creation suggestions, put the `/skill-creator` command on its own line (no "Run:" prefix) so users can easily copy it
-- Keep descriptions concise - one line when possible
